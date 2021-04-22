@@ -526,7 +526,7 @@ function Get-WsusIISConfig {
     https://docs.microsoft.com/en-us/powershell/module/webadminstration/get-webapplication?view=winserver2012-ps
 
     .LINK
-    https://docs.microsoft.com/en-us/powershell/module/iisadministration/Get-Website?view=win10-ps
+    https://docs.microsoft.com/en-us/powershell/module/iisadministration/get-iissite?view=win10-ps
     #>
 
     # Get WSUS IIS Index from registry
