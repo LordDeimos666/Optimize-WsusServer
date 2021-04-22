@@ -526,14 +526,14 @@ function Get-WsusIISConfig {
     https://docs.microsoft.com/en-us/powershell/module/webadminstration/get-webapplication?view=winserver2012-ps
 
     .LINK
-    https://docs.microsoft.com/en-us/powershell/module/iisadministration/get-iissite?view=win10-ps
+    https://docs.microsoft.com/en-us/powershell/module/iisadministration/Get-Website?view=win10-ps
     #>
 
     # Get WSUS IIS Index from registry
     $iisSiteIndex = Get-ItemPropertyValue "HKLM:\Software\Microsoft\Update Services\Server\Setup" -Name "IISTargetWebSiteIndex"
 
     # IIS Site
-    $iisSiteName = Get-IISSite | Where-Object -Property "Id" -Eq $iisSiteIndex | Select-Object -ExpandProperty "Name"
+    $iisSiteName = Get-Website | Where-Object -Property "Id" -Eq $iisSiteIndex | Select-Object -ExpandProperty "Name"
 
     # Site Application Pool
     $iisAppPool = Get-WebApplication -site $iisSiteName -Name "ClientWebService" | Select-Object -ExpandProperty "applicationPool"
@@ -634,7 +634,7 @@ function Update-WsusIISConfig ($settingKey, $recommendedValue) {
     $iisSiteIndex = Get-ItemPropertyValue "HKLM:\Software\Microsoft\Update Services\Server\Setup" -Name "IISTargetWebSiteIndex"
 
     # IIS Site
-    $iisSiteName = Get-IISSite | Where-Object -Property "Id" -Eq $iisSiteIndex | Select-Object -ExpandProperty "Name"
+    $iisSiteName = Get-Website | Where-Object -Property "Id" -Eq $iisSiteIndex | Select-Object -ExpandProperty "Name"
 
     # Site Application Pool
     $iisAppPool = Get-WebApplication -site $iisSiteName -Name "ClientWebService" | Select-Object -ExpandProperty "applicationPool"
